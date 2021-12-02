@@ -6,7 +6,7 @@ import Image from 'next/image';
 
 import menuItems from 'components/header/header.data';
 import { MenuItem } from 'lib/models';
-import NicolasDrawer from '/public/nicolas-drawer.png';
+import NicolasDrawer from 'public/nicolas-drawer.png';
 
 type HeaderDrawerProps = {
   open: boolean;
