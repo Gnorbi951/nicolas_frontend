@@ -39,9 +39,9 @@ export default function Header() {
           :
           (
             <MenuItemWrapper>
-              {menuItems.map((item: MenuItem, i: number) => (
+              {menuItems.map((item: MenuItem) => (
                 <Link
-                  key={`${item}_${i}`}
+                  key={item.label}
                   href={item.path}
                 >
                   {item.label}
