@@ -26,7 +26,7 @@ export default function Header() {
 
   return (
     <NavbarContainer position='static'>
-      <Toolbar variant='regular'>
+      <Toolbar variant='regular' >
         {/* TODO: Adjust width later on */}
         {width < 1000 ? 
           (
@@ -66,6 +66,7 @@ const MenuItemWrapper = styled.div`
   gap: 1.5rem;
 
   a {
+    font-family: 'Menlo';
     font-weight: bold;
     font-size: larger;
   }

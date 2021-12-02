@@ -48,11 +48,14 @@ const DrawerContainer = styled.div`
   padding: 0rem 1rem;
   background-color: #f0f0f0;
   height: 100vh;
+  padding-top: .5rem;
 `;
 
 const DrawerElement = styled.div`
   text-decoration: none;
   font-size: 1.4rem;
   color: #202131;
-  padding: 1rem 0em;
+  padding: 1rem 1.5rem 1rem 0rem;
+  font-weight: bold;
+  font-family: 'Menlo';
 `;

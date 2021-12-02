@@ -9,7 +9,9 @@ class MyDocument extends Document {
   render() {
     return (
       <Html>
-        <Head />
+        <Head>
+          <link href='http://fonts.cdnfonts.com/css/menlo' rel='stylesheet' />
+        </Head>
         <body>
           <Main />
           <NextScript />
