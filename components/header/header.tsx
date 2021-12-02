@@ -1,16 +1,17 @@
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { AppBar, Toolbar, IconButton } from '@material-ui/core';
-import MenuIcon from '@material-ui/icons/Menu';
 
 import menuItems from 'components/header/header.data';
 import { MenuItem } from 'lib/models';
 import styled from 'styled-components';
+import HeaderDrawer from './header-drawer';
 
 
 export default function Header() {
 
   const [width, setWidth] = useState<number>(1900);
+  const [open, setOpen] = useState<boolean>(false);
 
   useEffect(() => {
     setWidth(window.innerWidth);
@@ -29,10 +30,11 @@ export default function Header() {
         {/* TODO: Adjust width later on */}
         {width < 1000 ? 
           (
-            <IconButton edge='start' 
-              color='inherit' aria-label='menu'>
-              <MenuIcon />
-            </IconButton>
+            <HeaderDrawer
+              open={open}
+              handleOpen={() => setOpen(true)}
+              handleClose={() => setOpen(false)}
+            />
           )
           :
           (
