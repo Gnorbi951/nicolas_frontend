@@ -54,17 +54,22 @@ export default function Header() {
 }
 
 const NavbarContainer = styled(AppBar)`
-  background: #21a5ef !important
+  background: #202131 !important;
 `;
 
 const MenuItemWrapper = styled.div`
   width: 100%;
   display: flex;
   justify-content: center;
-  gap: 1rem;
+  gap: 1.5rem;
 
   a {
     font-weight: bold;
     font-size: larger;
+  }
+
+  a:hover {
+    color: #9e0e2e;
+    transition: 400ms;
   }
 `;
