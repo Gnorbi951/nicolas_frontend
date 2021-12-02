@@ -1,7 +1,7 @@
 // These might change
 export default [
   {
-    path: 'home',
+    path: '#',
     label: 'Home'
   },
   {

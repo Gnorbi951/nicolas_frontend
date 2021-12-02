@@ -1,5 +1,6 @@
+import { useState, useEffect } from 'react';
 import Link from 'next/link';
-import { AppBar, Toolbar, IconButton, Typography } from '@material-ui/core';
+import { AppBar, Toolbar, IconButton } from '@material-ui/core';
 import MenuIcon from '@material-ui/icons/Menu';
 
 import menuItems from 'components/header/header.data';
@@ -7,35 +8,49 @@ import { MenuItem } from 'lib/models';
 import styled from 'styled-components';
 
 
-type HeaderProps = {
-  className?: string;
-}
+export default function Header() {
 
-export default function Header(props: HeaderProps) {
+  const [width, setWidth] = useState<number>(1900);
+
+  useEffect(() => {
+    setWidth(window.innerWidth);
+    window.addEventListener('resize', () => updateWindowWidth());
+
+    return window.removeEventListener('resize', updateWindowWidth);
+  }, []);
+
+  function updateWindowWidth() {
+    setWidth(window.innerWidth);
+  }
+
   return (
-    <NavbarContainer>
-      <AppBar position='static'>
-        <Toolbar variant='dense'>
-          <IconButton edge='start' 
-            color='inherit' aria-label='menu'>
-            <MenuIcon />
-          </IconButton>
-          {menuItems.map((item: MenuItem, i: number) => (
-            <Link
-              key={`${item}_${i}`}
-              href={item.path}
-            >
-              {item.label}
-            </Link>
-          ))}
-        </Toolbar>
-      </AppBar>
+    <NavbarContainer position='static'>
+      <Toolbar variant='regular'>
+        {/* TODO: Adjust width later on */}
+        {width < 1000 ? 
+          (
+            <IconButton edge='start' 
+              color='inherit' aria-label='menu'>
+              <MenuIcon />
+            </IconButton>
+          )
+          :
+          (
+            menuItems.map((item: MenuItem, i: number) => (
+              <Link
+                key={`${item}_${i}`}
+                href={item.path}
+              >
+                {item.label}
+              </Link>
+            ))
+          )
+        }
+      </Toolbar>
     </NavbarContainer>
   );
 }
 
-const NavbarContainer = styled.div`
-  display: flex;
-  flex-direction: row;
-
+const NavbarContainer = styled(AppBar)`
+  background: #21a5ef !important
 `;
