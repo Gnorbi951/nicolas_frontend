@@ -36,14 +36,16 @@ export default function Header() {
           )
           :
           (
-            menuItems.map((item: MenuItem, i: number) => (
-              <Link
-                key={`${item}_${i}`}
-                href={item.path}
-              >
-                {item.label}
-              </Link>
-            ))
+            <MenuItemWrapper>
+              {menuItems.map((item: MenuItem, i: number) => (
+                <Link
+                  key={`${item}_${i}`}
+                  href={item.path}
+                >
+                  {item.label}
+                </Link>
+              ))}
+            </MenuItemWrapper>
           )
         }
       </Toolbar>
@@ -53,4 +55,16 @@ export default function Header() {
 
 const NavbarContainer = styled(AppBar)`
   background: #21a5ef !important
+`;
+
+const MenuItemWrapper = styled.div`
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+
+  a {
+    font-weight: bold;
+    font-size: larger;
+  }
 `;
