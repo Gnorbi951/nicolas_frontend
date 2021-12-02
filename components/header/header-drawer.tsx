@@ -15,13 +15,11 @@ type HeaderDrawerProps = {
 export default function HeaderDrawer(props: HeaderDrawerProps) {
   return (
     <>
-      <Toolbar>
-        <IconButton edge='start' aria-label='menu' onClick={() => props.handleOpen()}>
-          <MenuIcon style={{color: "#fff", fontSize: "2.2rem"}}/>
-        </IconButton>
-      </Toolbar>
+      <IconButton edge='start' aria-label='menu' style={{marginLeft: 'auto'}} onClick={() => props.handleOpen()}>
+        <MenuIcon style={{color: '#fff', fontSize: '2.2rem'}}/>
+      </IconButton>
       <Drawer
-        anchor={"left"}
+        anchor={"right"}
         open={props.open}
         onClose={() => props.handleClose()}
       >
