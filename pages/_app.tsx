@@ -1,8 +1,18 @@
-import '/styles/globals.css';
+import Head from 'next/head';
 import type { AppProps } from 'next/app';
 
-function MyApp({ Component, pageProps }: AppProps) {
-  return <Component {...pageProps} />;
+import '/styles/globals.css';
+
+function NicolasFrontEnd({ Component, pageProps }: AppProps) {
+  return (
+    <>
+      <Head>
+        <title>Nicolas Cage Webshop</title>
+        <link rel='icon' href='/favicon.ico' />
+      </Head>
+      <Component {...pageProps} />
+    </>
+  );
 }
 
-export default MyApp;
+export default NicolasFrontEnd;
