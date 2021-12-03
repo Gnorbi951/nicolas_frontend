@@ -6,7 +6,6 @@ import Image from 'next/image';
 
 import menuItems from 'components/header/header.data';
 import { MenuItem } from 'lib/models';
-import NicolasDrawer from 'public/nicolas-drawer.png';
 
 type HeaderDrawerProps = {
   open: boolean;
@@ -27,7 +26,7 @@ export default function HeaderDrawer(props: HeaderDrawerProps) {
       >
         <DrawerContainer>
           <Image
-            src={NicolasDrawer}
+            src={'/nicolas-drawer.png'}
             alt={"nicolas_logo"}
             className={"drawer-logo"}
             height='100px'
