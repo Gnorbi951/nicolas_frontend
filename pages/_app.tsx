@@ -12,6 +12,9 @@ function NicolasFrontEnd({ Component, pageProps }: AppProps) {
   const [errorOpen, setErrorOpen] = useState<boolean>(false);
   const [errorMessage, setErrorMessage] = useState<string>('');
 
+  // use this interceptor later on
+  // axios.defaults.headers.post['Content-Type'] = 'application/json';
+
   const props: WebshopProps = {
     setErrorOpen,
     setErrorMessage,
