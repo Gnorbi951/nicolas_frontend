@@ -4,6 +4,7 @@ import styled from 'styled-components';
 
 import { ShopItem } from 'lib/models';
 import ShopItems from "public/data/items.json";
+import ShopItemElement from 'components/shop-item/shop-item';
 
 
 export default function ShopItemList() {
@@ -21,13 +22,12 @@ export default function ShopItemList() {
   return (
     <>
       <ItemWrapper>
-
         {!loading ?
           (
             <ItemListContainer>
               {
                 items.map((item: ShopItem) => (
-                  <p key={item.id}>{item.name}</p>
+                  <ShopItemElement key={item.id} item={item} />
                 ))
               }
             </ItemListContainer>
