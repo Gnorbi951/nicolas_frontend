@@ -16,12 +16,12 @@ export default function ShopItemElement(props: ShopItemProps) {
         <Image
           src={item.imageUrl}
           alt={'item-picture'}
-          width='100vw'
-          height='100vh'
+          width='250px'
+          height='250px'
         />
-        {item.name}
+        <CardName>{item.name}</CardName>
+        <span>{item.price} HUF</span>
       </CardWrapper>
-      <p></p>
     </>
   );
 }
@@ -29,10 +29,14 @@ export default function ShopItemElement(props: ShopItemProps) {
 const CardWrapper = styled.div`
   display: flex;
   flex-direction: column;
-  align-items: center;
   padding: 1.5rem;
-  margin: 1rem;
+  margin: 1rem auto;
   background: #fff;
   border-radius: 10px;
   box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+
+`;
+
+const CardName = styled.p`
+  font-family: 'Menlo';
 `;

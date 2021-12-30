@@ -21,36 +21,44 @@ export default function ShopItemList() {
 
   return (
     <>
-      <ItemWrapper>
-        {!loading ?
-          (
-            <ItemListContainer>
-              {
-                items.map((item: ShopItem) => (
-                  <ShopItemElement key={item.id} item={item} />
-                ))
-              }
-            </ItemListContainer>
-          )
-          :
-          (
-            <CircularProgress />
-          )
-        }
-      </ItemWrapper>
+      <ItemContainer>
+        <ItemWrapper>
+          {!loading ?
+            (
+              <ItemListContainer>
+                {
+                  items.map((item: ShopItem) => (
+                    <ShopItemElement key={item.id} item={item} />
+                  ))
+                }
+              </ItemListContainer>
+            )
+            :
+            (
+              <CircularProgress />
+            )
+          }
+        </ItemWrapper>
+      </ItemContainer>
     </>
   );
 }
 
-// card items should be around flex: 0 1 25%
 const ItemListContainer = styled.div`
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
+  gap: 50px;
 `;
 
 const ItemWrapper = styled.div`
   display: flex;
   justify-content: center;
   padding: 1rem;
+  max-width: 1500px;
+`;
+
+const ItemContainer = styled.div`
+  display: flex;
+  justify-content: center;
 `;
