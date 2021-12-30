@@ -1,8 +1,9 @@
+import ItemList from "components/item-list/item-list";
 
 function Home() {
   return (
     <>
-      Home
+      <ItemList />
     </>
   );
 }
