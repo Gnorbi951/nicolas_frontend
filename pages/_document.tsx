@@ -10,7 +10,6 @@ class MyDocument extends Document {
     return (
       <Html>
         <Head>
-          <title>NC Webshop</title>
           <link href='http://fonts.cdnfonts.com/css/menlo' rel='stylesheet' />
         </Head>
         <body>
