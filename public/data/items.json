@@ -4,5 +4,54 @@
     "name": "Face Mug",
     "price": 4500,
     "imageUrl": "https://i.imgur.com/Ms486cc.jpeg"
+  },
+  {
+    "id": "e208203f-b19a-48ca-a753-e27040e02382",
+    "name": "Air Sequin Pillow",
+    "price": 2500,
+    "imageUrl": "https://i.imgur.com/KmNKfHt.jpg"
+  },
+  {
+    "id": "52ccacef-3eb5-4674-867e-447285522a1e",
+    "name": "Uncaged Shirt",
+    "price": 6000,
+    "imageUrl": "https://i.imgur.com/RBeKG58.jpg"
+  },
+  {
+    "id": "9feff5ee-7230-4dd1-aa8d-e35b417e28cd",
+    "name": "Treasure Mug",
+    "price": 4500,
+    "imageUrl": "https://i.imgur.com/k9m2MSO.jpg"
+  },
+  {
+    "id": "4f011eea-a0dd-42e4-bb67-6435b8a301fe",
+    "name": "Face Knee Socks",
+    "price": 4500,
+    "imageUrl": "https://i.imgur.com/IwG8VES.jpg"
+  },
+  {
+    "id": "885de85b-1b18-46e3-b000-178571d84fc0",
+    "name": "Mood Shirt",
+    "price": 6000,
+    "imageUrl": "https://i.imgur.com/sgLuELX.jpg"
+  },
+  {
+    "id": "94757189-251f-4129-a82d-850e08351a2a",
+    "name": "Pickle Nick",
+    "price": 900,
+    "imageUrl": "https://i.imgur.com/kTAznm0.jpg"
+  },
+  {
+    "id": "dd0ee730-ac64-4591-bf43-f23d83268937",
+    "name": "Oil portray",
+    "price": 45000,
+    "imageUrl": "https://i.imgur.com/TiwbCdr.jpg"
+  },
+  {
+    "id": "4528c396-6d58-4254-9be1-a876f66e7770",
+    "name": "Face Sticker",
+    "price": 200,
+    "imageUrl": "https://i.imgur.com/6f7RHTK.jpg"
   }
+  
 ]
