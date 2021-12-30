@@ -6,7 +6,7 @@ import { ShopItem } from 'lib/models';
 import ShopItems from "public/data/items.json";
 
 
-export default function ItemList() {
+export default function ShopItemList() {
 
   const [loading, setLoading] = useState<boolean>(true);
   const [items, setItems] = useState<ShopItem[]>([]);

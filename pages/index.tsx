@@ -1,9 +1,9 @@
-import ItemList from "components/item-list/item-list";
+import ShopItemList from "components/shop-item-list/shop-item-list";
 
 function Home() {
   return (
     <>
-      <ItemList />
+      <ShopItemList />
     </>
   );
 }
