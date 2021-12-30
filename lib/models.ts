@@ -10,3 +10,8 @@ export interface ShopItem {
     description?: string;
     imageUrl: string;
 }
+
+export interface WebshopProps {
+  setErrorOpen: Function;
+  setErrorMessage: Function;
+}
