@@ -15,3 +15,8 @@ export interface WebshopProps {
   setErrorOpen: Function;
   setErrorMessage: Function;
 }
+
+export interface CartItem {
+  id: string;
+  amount: number;
+}

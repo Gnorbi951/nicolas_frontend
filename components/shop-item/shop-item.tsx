@@ -1,7 +1,9 @@
 import styled from 'styled-components';
 import Image from 'next/image';
 import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
-import { ShopItem } from 'lib/models';
+import store from 'store';
+
+import { CartItem, ShopItem } from 'lib/models';
 
 // extend with WebshopProps if snackbar is needed
 interface ShopItemProps {
@@ -10,6 +12,31 @@ interface ShopItemProps {
 
 export default function ShopItemElement(props: ShopItemProps) {
   const { item } = props;
+
+  function addToCart() {
+    let currentCart: CartItem[] | undefined = store.get('cart');
+    const currentItem: CartItem = { id: item.id, amount: 1 };
+    
+    // case for empty cart
+    if (currentCart == null) {
+      store.set('cart', [currentItem]);
+      return;
+    }
+  
+    // If the item is already in the cart
+    for (let i=0; i<currentCart?.length; i++) {
+      if (currentCart[i].id === currentItem.id) {
+        currentCart[i].amount = ++currentCart[i].amount;
+        store.set('cart', currentCart);
+        return;
+      }
+    }
+
+    // Item is not in the cart
+    currentCart.push(currentItem);
+    store.set('cart', currentCart);
+  }
+
   return (
     <>
       <CardWrapper>
@@ -22,7 +49,7 @@ export default function ShopItemElement(props: ShopItemProps) {
         <CardName>{item.name}</CardName>
         <CardBottomRow>
           <span>{item.price} HUF</span>
-          <ShoppingCartIcon onClick={() => console.log("lol")}/>
+          <ShoppingCartIcon onClick={() => addToCart()}/>
         </CardBottomRow>
       </CardWrapper>
     </>
