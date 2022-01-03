@@ -5,8 +5,8 @@ export default [
     label: 'Home'
   },
   {
-    path: 'items',
-    label: 'Items'
+    path: 'cart',
+    label: 'Cart'
   },
   {
     path: 'about',
