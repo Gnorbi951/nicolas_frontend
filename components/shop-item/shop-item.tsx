@@ -1,7 +1,10 @@
+import { useState } from 'react';
 import styled from 'styled-components';
 import Image from 'next/image';
 import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
 import store from 'store';
+import { Snackbar, IconButton } from '@material-ui/core';
+import CloseIcon from '@material-ui/icons/Close';
 
 import { CartItem, ShopItem } from 'lib/models';
 
@@ -12,6 +15,8 @@ interface ShopItemProps {
 
 export default function ShopItemElement(props: ShopItemProps) {
   const { item } = props;
+
+  const [open, setOpen] = useState<boolean>(false);
 
   function addToCart() {
     let currentCart: CartItem[] | undefined = store.get('cart');
@@ -49,9 +54,25 @@ export default function ShopItemElement(props: ShopItemProps) {
         <CardName>{item.name}</CardName>
         <CardBottomRow>
           <span>{item.price} HUF</span>
-          <ShoppingCartIcon onClick={() => addToCart()}/>
+          <ShoppingCartIcon onClick={() => {
+            addToCart();
+            setOpen(true);
+          }} />
         </CardBottomRow>
       </CardWrapper>
+      <Snackbar
+        open={open}
+        autoHideDuration={3000}
+        onClose={() => {setOpen(false);}}
+        message='Item added to cart'
+        action={(
+          <>
+            <IconButton size='small' aria-label='close' color='inherit' onClick={() => setOpen(false)}>
+              <CloseIcon fontSize='small' />
+            </IconButton>
+          </>
+        )}
+      />
     </>
   );
 }
@@ -78,5 +99,8 @@ const CardBottomRow = styled.div`
     font-size: 2rem;
     margin-top: -1.5rem;
     cursor: pointer;
+  }
+  svg:active {
+    transform: translateY(4px);
   }
 `;
