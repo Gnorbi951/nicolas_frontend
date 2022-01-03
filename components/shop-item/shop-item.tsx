@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import Image from 'next/image';
-
+import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
 import { ShopItem } from 'lib/models';
 
 // extend with WebshopProps if snackbar is needed
@@ -20,7 +20,10 @@ export default function ShopItemElement(props: ShopItemProps) {
           height='250px'
         />
         <CardName>{item.name}</CardName>
-        <span>{item.price} HUF</span>
+        <CardBottomRow>
+          <span>{item.price} HUF</span>
+          <ShoppingCartIcon onClick={() => console.log("lol")}/>
+        </CardBottomRow>
       </CardWrapper>
     </>
   );
@@ -34,9 +37,19 @@ const CardWrapper = styled.div`
   background: #fff;
   border-radius: 10px;
   box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
-
+  user-select: none;
 `;
 
 const CardName = styled.p`
   font-family: 'Menlo';
+`;
+
+const CardBottomRow = styled.div`
+  display: flex;
+  justify-content: space-between;
+  svg {
+    font-size: 2rem;
+    margin-top: -1.5rem;
+    cursor: pointer;
+  }
 `;
