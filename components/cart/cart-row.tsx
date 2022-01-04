@@ -6,15 +6,17 @@ import styled from "styled-components";
 
 
 interface CartRowProps {
+  id: string;
   name: string;
   amount: number;
   price: number;
   imageUrl: string;
+  amountCallback: Function;
 }
 
 export default function CartRow(props: CartRowProps) {
 
-  const { name, amount, price, imageUrl } = props;
+  const { id, name, amount, price, imageUrl, amountCallback } = props;
 
   return (
     <>
@@ -42,9 +44,9 @@ export default function CartRow(props: CartRowProps) {
         <TableCell>{name}</TableCell>
         <TableCell>
           <AmountWrapper>
-            <AddIcon />
+            <AddIcon onClick={() => amountCallback(amount+1, id)}/>
             <p>{amount}</p>
-            <RemoveIcon />
+            <RemoveIcon onClick={() => amountCallback(amount-1, id)}/>
           </AmountWrapper>
         </TableCell>
         <TableCell>{price}</TableCell>
@@ -67,7 +69,7 @@ const AmountWrapper = styled.div`
   justify-content: center;
   align-items: center;
   gap: 1rem;
-  
+
   svg {
     cursor: pointer;
   }

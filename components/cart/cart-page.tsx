@@ -52,6 +52,31 @@ export default function CartPage() {
     setTotalPrice(price);
   }, [cartItems]);
 
+  function changeItemAmount(amount: number, id: string) {
+    // We need to change localstorage as well as state
+    if (amount < 1) {
+      return;
+    }
+
+    let newCartState: ShopItem[] = [];
+    cartItems.forEach((item: ShopItem) => {
+      if (item.id === id) {
+        item.amount = amount;
+      }
+      newCartState.push(item);
+    });
+    setCartItems(newCartState);
+    
+    let newCartStorage: CartItem[] = store.get('cart');
+    newCartStorage.every((item: CartItem) => {
+      if (item.id === id) {
+        item.amount = amount;
+      }
+      return true;
+    });
+    store.set('cart', newCartStorage);
+  }
+
   return (
     <>
       {loading ?
@@ -86,10 +111,12 @@ export default function CartPage() {
                         // id and item need to be moved together
                           <CartRow
                             key={item.id}
+                            id={item.id}
                             name={item.name}
                             amount={item.amount ?? 1}
                             price={item.price}
                             imageUrl={item.imageUrl}
+                            amountCallback={(amount: number, id: string) => changeItemAmount(amount, id)}
                           />
                         ))
                       }
