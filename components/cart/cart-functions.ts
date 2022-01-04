@@ -1,5 +1,6 @@
 import { SetStateAction } from "react";
 import swal from 'sweetalert';
+import store from 'store';
 
 import { CartItem, ShopItem } from "lib/models";
 
