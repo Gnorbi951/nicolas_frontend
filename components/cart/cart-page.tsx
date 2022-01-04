@@ -5,6 +5,7 @@ import store from 'store';
 
 import { CartItem, ShopItem } from 'lib/models';
 import ShopItems from "public/data/items.json";
+import CartRow from './cart-row';
 
 
 export default function CartPage() {
@@ -80,13 +81,12 @@ export default function CartPage() {
                     cartItems.map((item: ShopItem) => (
                     // You could move it to external component.
                     // id and item need to be moved together
-                      <>
-                        <TableRow>
-                          <TableCell>{item.name}</TableCell>
-                          <TableCell>{item.amount}</TableCell>
-                          <TableCell>{item.price}</TableCell>
-                        </TableRow>
-                      </>
+                      <CartRow
+                        key={item.id}
+                        name={item.name}
+                        amount={item.amount ?? 1}
+                        price={item.price}
+                      />
                     ))
                   }
                   <TableRow>
