@@ -123,5 +123,6 @@ const EmptyHeader = styled.h1`
 const TableWrapper = styled.div`
   margin: auto;
   width: 80%;
+  max-width: 1000px;
   margin-top: 5vh;
 `;

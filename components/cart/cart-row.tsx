@@ -1,4 +1,6 @@
 import { TableCell, TableRow } from "@material-ui/core";
+import AddIcon from '@material-ui/icons/Add';
+import RemoveIcon from '@material-ui/icons/Remove';
 import Image from 'next/image';
 import styled from "styled-components";
 
@@ -38,7 +40,13 @@ export default function CartRow(props: CartRowProps) {
           )
         }
         <TableCell>{name}</TableCell>
-        <TableCell>{amount}</TableCell>
+        <TableCell>
+          <AmountWrapper>
+            <AddIcon />
+            <p>{amount}</p>
+            <RemoveIcon />
+          </AmountWrapper>
+        </TableCell>
         <TableCell>{price}</TableCell>
       </TableRow>
     </>
@@ -52,4 +60,18 @@ const ImageWrapper = styled.div`
 
 const ImageCell = styled(TableCell)`
   width: 10%;
+`;
+
+const AmountWrapper = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  
+  svg {
+    cursor: pointer;
+  }
+  svg:active {
+    transform: translateY(4px);
+  }
 `;
