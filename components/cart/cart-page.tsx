@@ -15,6 +15,7 @@ export default function CartPage() {
   const [cartItems, setCartItems] = useState<ShopItem[]>([]);
   const [fetching, setFetching] = useState<boolean>(true);
   const [loading, setLoading] = useState<boolean>(true);
+  const [totalPrice, setTotalPrice] = useState<number>(0);
 
   useEffect(() => {
     setCart(store.get('cart'));
@@ -30,6 +31,7 @@ export default function CartPage() {
       items.forEach((item: ShopItem) => {
         cart?.every((cartItem: CartItem) => {
           if (cartItem.id === item.id) {
+            item.amount = cartItem.amount;
             completeCartList.push(item);
             return false; // break the loop when its found
           }
@@ -40,6 +42,14 @@ export default function CartPage() {
       setLoading(false);
     }
   }, [fetching]);
+
+  useEffect(() => {
+    let price = 0;
+    cartItems.forEach((item: ShopItem) => {
+      price += item.price * (item.amount ?? 1);
+    });
+    setTotalPrice(price);
+  }, [cartItems]);
 
   return (
     <>
@@ -67,18 +77,23 @@ export default function CartPage() {
                 </TableHead>
                 <TableBody>
                   {
-                    cart.map((item: CartItem) => (
+                    cartItems.map((item: ShopItem) => (
                     // You could move it to external component.
                     // id and item need to be moved together
                       <>
                         <TableRow>
-                          <TableCell>Name</TableCell>
+                          <TableCell>{item.name}</TableCell>
                           <TableCell>{item.amount}</TableCell>
-                          <TableCell>{item.id}</TableCell>
+                          <TableCell>{item.price}</TableCell>
                         </TableRow>
                       </>
                     ))
                   }
+                  <TableRow>
+                    <TableCell></TableCell>
+                    <TableCell>Total Price:</TableCell>
+                    <TableCell>{totalPrice}</TableCell>
+                  </TableRow>
                 </TableBody>
               </TableContainer>
             )

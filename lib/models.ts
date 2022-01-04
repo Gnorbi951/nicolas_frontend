@@ -9,6 +9,7 @@ export interface ShopItem {
     price: number;
     description?: string;
     imageUrl: string;
+    amount?: number;
 }
 
 export interface WebshopProps {
