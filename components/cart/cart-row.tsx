@@ -1,5 +1,6 @@
 import { TableCell, TableRow } from "@material-ui/core";
 import Image from 'next/image';
+import styled from "styled-components";
 
 
 interface CartRowProps {
@@ -17,12 +18,14 @@ export default function CartRow(props: CartRowProps) {
     <>
       <TableRow>
         <TableCell>
-          <Image
-            src={imageUrl}
-            alt={'cart-picture'}
-            width='50px'
-            height='50px'
-          />
+          <ImageWrapper>
+            <Image
+              src={imageUrl}
+              alt={'cart-picture'}
+              width='50px'
+              height='50px'
+            />
+          </ImageWrapper>
         </TableCell>
         <TableCell>{name}</TableCell>
         <TableCell>{amount}</TableCell>
@@ -31,3 +34,8 @@ export default function CartRow(props: CartRowProps) {
     </>
   );
 }
+
+const ImageWrapper = styled.div`
+  display: flex;
+  justify-content: center;
+`;

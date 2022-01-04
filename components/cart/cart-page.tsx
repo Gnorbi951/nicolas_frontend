@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { CircularProgress, Paper, TableBody, TableCell, TableContainer, TableHead, TableRow } from '@material-ui/core';
+import { CircularProgress, Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow } from '@material-ui/core';
 import styled from 'styled-components';
 import store from 'store';
 
@@ -62,43 +62,47 @@ export default function CartPage() {
         (
           cart != null && cart.length > 0 ?
             (
-              <TableContainer component={Paper}>
-                <TableHead>
-                  <TableRow>
-                    <TableCell></TableCell>
-                    <TableCell>
-                    Name
-                    </TableCell>
-                    <TableCell>
-                    Amount
-                    </TableCell>
-                    <TableCell>
-                    Price
-                    </TableCell>
-                  </TableRow>
-                </TableHead>
-                <TableBody>
-                  {
-                    cartItems.map((item: ShopItem) => (
-                    // You could move it to external component.
-                    // id and item need to be moved together
-                      <CartRow
-                        key={item.id}
-                        name={item.name}
-                        amount={item.amount ?? 1}
-                        price={item.price}
-                        imageUrl={item.imageUrl}
-                      />
-                    ))
-                  }
-                  <TableRow>
-                    <TableCell></TableCell>
-                    <TableCell></TableCell>
-                    <TableCell>Total Price:</TableCell>
-                    <TableCell>{totalPrice}</TableCell>
-                  </TableRow>
-                </TableBody>
-              </TableContainer>
+              <TableWrapper>
+                <TableContainer component={Paper}>
+                  <Table>
+                    <TableHead>
+                      <TableRow>
+                        <TableCell></TableCell>
+                        <TableCell>
+                        Name
+                        </TableCell>
+                        <TableCell>
+                        Amount
+                        </TableCell>
+                        <TableCell>
+                        Price
+                        </TableCell>
+                      </TableRow>
+                    </TableHead>
+                    <TableBody>
+                      {
+                        cartItems.map((item: ShopItem) => (
+                        // You could move it to external component.
+                        // id and item need to be moved together
+                          <CartRow
+                            key={item.id}
+                            name={item.name}
+                            amount={item.amount ?? 1}
+                            price={item.price}
+                            imageUrl={item.imageUrl}
+                          />
+                        ))
+                      }
+                      <TableRow>
+                        <TableCell></TableCell>
+                        <TableCell></TableCell>
+                        <TableCell>Total Price:</TableCell>
+                        <TableCell>{totalPrice}</TableCell>
+                      </TableRow>
+                    </TableBody>
+                  </Table>
+                </TableContainer>
+              </TableWrapper>
             )
             :
             (
@@ -114,4 +118,10 @@ const EmptyHeader = styled.h1`
   text-align: center;
   font-family: 'Menlo';
   margin-top: 20vh;
+`;
+
+const TableWrapper = styled.div`
+  margin: auto;
+  width: 80%;
+  margin-top: 5vh;
 `;
