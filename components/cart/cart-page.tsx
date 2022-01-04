@@ -6,6 +6,7 @@ import store from 'store';
 import { CartItem, ShopItem } from 'lib/models';
 import ShopItems from "public/data/items.json";
 import CartRow from './cart-row';
+import swal from 'sweetalert';
 
 
 export default function CartPage() {
@@ -77,6 +78,35 @@ export default function CartPage() {
     store.set('cart', newCartStorage);
   }
 
+  function deleteItem(id: string) {
+    // We need to change localstorage as well as state
+    swal({
+      title: 'Delete Item?',
+      icon: 'warning',
+      buttons: [ 'Cancel', 'Confirm' ],
+      dangerMode: true,
+    })
+      .then((willDelete) => {
+        if (willDelete) {
+          let newCartState: ShopItem[] = [];
+          cartItems.forEach((item: ShopItem) => {
+            if (item.id !== id) {
+              newCartState.push(item);
+            }
+          });
+          setCartItems(newCartState);
+      
+          let newCartStorage: CartItem[] = store.get('cart');
+          for (let i = 0; i<newCartStorage.length; i++) {
+            if (newCartStorage[i].id === id) {
+              newCartStorage.splice(i, 1);
+            }
+          }
+          store.set('cart', newCartStorage);
+        }
+      });
+  }
+
   return (
     <>
       {loading ?
@@ -117,6 +147,7 @@ export default function CartPage() {
                             price={item.price}
                             imageUrl={item.imageUrl}
                             amountCallback={(amount: number, id: string) => changeItemAmount(amount, id)}
+                            deleteCallback={(id: string) => deleteItem(id)}
                           />
                         ))
                       }

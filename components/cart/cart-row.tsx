@@ -1,6 +1,7 @@
 import { TableCell, TableRow } from "@material-ui/core";
 import AddIcon from '@material-ui/icons/Add';
 import RemoveIcon from '@material-ui/icons/Remove';
+import DeleteIcon from '@material-ui/icons/Delete';
 import Image from 'next/image';
 import styled from "styled-components";
 
@@ -12,11 +13,12 @@ interface CartRowProps {
   price: number;
   imageUrl: string;
   amountCallback: Function;
+  deleteCallback: Function
 }
 
 export default function CartRow(props: CartRowProps) {
 
-  const { id, name, amount, price, imageUrl, amountCallback } = props;
+  const { id, name, amount, price, imageUrl, amountCallback, deleteCallback } = props;
 
   return (
     <>
@@ -44,9 +46,10 @@ export default function CartRow(props: CartRowProps) {
         <TableCell>{name}</TableCell>
         <TableCell>
           <AmountWrapper>
-            <AddIcon onClick={() => amountCallback(amount+1, id)}/>
+            <AddIcon onClick={() => amountCallback(amount+1, id)} />
             <p>{amount}</p>
-            <RemoveIcon onClick={() => amountCallback(amount-1, id)}/>
+            <RemoveIcon onClick={() => amountCallback(amount-1, id)} />
+            <DeleteIcon onClick={() => deleteCallback(id)} />
           </AmountWrapper>
         </TableCell>
         <TableCell>{price}</TableCell>
@@ -75,5 +78,9 @@ const AmountWrapper = styled.div`
   }
   svg:active {
     transform: translateY(4px);
+  }
+
+  svg:last-child {
+    margin-left: 30px;
   }
 `;
