@@ -83,7 +83,7 @@ export default function CartPage() {
                         <TableCell>
                         Name
                         </TableCell>
-                        <TableCell>
+                        <TableCell style={{textAlign: 'center'}}>
                         Amount
                         </TableCell>
                         <TableCell>
@@ -111,7 +111,7 @@ export default function CartPage() {
                       <TableRow>
                         <TableCell></TableCell>
                         {window.innerWidth > 1000 && (<TableCell></TableCell>)}
-                        <TableCell>Total Price:</TableCell>
+                        <TableCell style={{textAlign: 'right'}}>Total Price:</TableCell>
                         <TableCell>{totalPrice}</TableCell>
                       </TableRow>
                     </TableBody>
@@ -137,7 +137,7 @@ const EmptyHeader = styled.h1`
 
 const TableWrapper = styled.div`
   margin: auto;
-  width: 80%;
+  width: 90%;
   max-width: 1000px;
   margin-top: 5vh;
 `;
