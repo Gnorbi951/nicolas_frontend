@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, SetStateAction } from 'react';
 import { CircularProgress, Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow } from '@material-ui/core';
 import styled from 'styled-components';
 import store from 'store';
@@ -6,7 +6,7 @@ import store from 'store';
 import { CartItem, ShopItem } from 'lib/models';
 import ShopItems from "public/data/items.json";
 import CartRow from './cart-row';
-import swal from 'sweetalert';
+import { promptDelete, changeAmount } from './cart-functions';
 
 
 export default function CartPage() {
@@ -55,56 +55,13 @@ export default function CartPage() {
 
   function changeItemAmount(amount: number, id: string) {
     // We need to change localstorage as well as state
-    if (amount < 1) {
-      return;
-    }
-
-    let newCartState: ShopItem[] = [];
-    cartItems.forEach((item: ShopItem) => {
-      if (item.id === id) {
-        item.amount = amount;
-      }
-      newCartState.push(item);
-    });
-    setCartItems(newCartState);
-    
-    let newCartStorage: CartItem[] = store.get('cart');
-    newCartStorage.every((item: CartItem) => {
-      if (item.id === id) {
-        item.amount = amount;
-      }
-      return true;
-    });
-    store.set('cart', newCartStorage);
+    if (amount < 1) {return;}
+    changeAmount(cartItems, id, amount, setCartItems);
   }
 
   function deleteItem(id: string) {
     // We need to change localstorage as well as state
-    swal({
-      title: 'Delete Item?',
-      icon: 'warning',
-      buttons: [ 'Cancel', 'Confirm' ],
-      dangerMode: true,
-    })
-      .then((willDelete) => {
-        if (willDelete) {
-          let newCartState: ShopItem[] = [];
-          cartItems.forEach((item: ShopItem) => {
-            if (item.id !== id) {
-              newCartState.push(item);
-            }
-          });
-          setCartItems(newCartState);
-      
-          let newCartStorage: CartItem[] = store.get('cart');
-          for (let i = 0; i<newCartStorage.length; i++) {
-            if (newCartStorage[i].id === id) {
-              newCartStorage.splice(i, 1);
-            }
-          }
-          store.set('cart', newCartStorage);
-        }
-      });
+    promptDelete(cartItems, id, setCartItems);
   }
 
   return (
