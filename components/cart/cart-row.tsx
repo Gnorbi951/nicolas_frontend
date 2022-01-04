@@ -17,16 +17,26 @@ export default function CartRow(props: CartRowProps) {
   return (
     <>
       <TableRow>
-        <TableCell>
-          <ImageWrapper>
-            <Image
-              src={imageUrl}
-              alt={'cart-picture'}
-              width='50px'
-              height='50px'
-            />
-          </ImageWrapper>
-        </TableCell>
+        {window.innerWidth > 1000 ?
+          (
+            <>
+              <ImageCell>
+                <ImageWrapper>
+                  <Image
+                    src={imageUrl}
+                    alt={'cart-picture'}
+                    width='50px'
+                    height='50px'
+                  />
+                </ImageWrapper>
+              </ImageCell>
+            </>
+          )
+          :
+          (
+            <></>
+          )
+        }
         <TableCell>{name}</TableCell>
         <TableCell>{amount}</TableCell>
         <TableCell>{price}</TableCell>
@@ -38,4 +48,8 @@ export default function CartRow(props: CartRowProps) {
 const ImageWrapper = styled.div`
   display: flex;
   justify-content: center;
+`;
+
+const ImageCell = styled(TableCell)`
+  width: 10%;
 `;

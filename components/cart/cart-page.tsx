@@ -67,7 +67,7 @@ export default function CartPage() {
                   <Table>
                     <TableHead>
                       <TableRow>
-                        <TableCell></TableCell>
+                        {window.innerWidth > 1000 && (<TableCell></TableCell>)}
                         <TableCell>
                         Name
                         </TableCell>
@@ -95,7 +95,7 @@ export default function CartPage() {
                       }
                       <TableRow>
                         <TableCell></TableCell>
-                        <TableCell></TableCell>
+                        {window.innerWidth > 1000 && (<TableCell></TableCell>)}
                         <TableCell>Total Price:</TableCell>
                         <TableCell>{totalPrice}</TableCell>
                       </TableRow>
