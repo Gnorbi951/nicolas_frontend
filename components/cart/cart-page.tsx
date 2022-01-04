@@ -65,6 +65,7 @@ export default function CartPage() {
               <TableContainer component={Paper}>
                 <TableHead>
                   <TableRow>
+                    <TableCell></TableCell>
                     <TableCell>
                     Name
                     </TableCell>
@@ -86,10 +87,12 @@ export default function CartPage() {
                         name={item.name}
                         amount={item.amount ?? 1}
                         price={item.price}
+                        imageUrl={item.imageUrl}
                       />
                     ))
                   }
                   <TableRow>
+                    <TableCell></TableCell>
                     <TableCell></TableCell>
                     <TableCell>Total Price:</TableCell>
                     <TableCell>{totalPrice}</TableCell>
